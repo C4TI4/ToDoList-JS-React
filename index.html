@@ -10,16 +10,20 @@
         <div class="mainBlock">
             <h1>To-Do</h1>
             <!-- We need a form for adding a new to do -->
-            <form id="">
-                <input type="text" placeholder="Add item..." />
+            <form id="makeNewToDoForm">
+                <input
+                    id="textForNewToDo"
+                    type="text"
+                    placeholder="Add item..."
+                />
                 <button type="submit" id="newItemBtn">Submit</button>
             </form>
             <!-- We need some kind of container for the list itself -->
             <ul id="toDoList">
                 <li class="toDoItem">
-                    <button id="checkDoneBtn">□</button>
+                    <button class="checkDoneBtn">□</button>
                     <p class="toDoText">Example item</p>
-                    <button id="deleteBtn">Delete</button>
+                    <button class="deleteBtn">Delete</button>
                 </li>
             </ul>
             <!----- button for "done" (Kat) ---->
