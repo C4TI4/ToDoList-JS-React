@@ -3,7 +3,6 @@ const toDoList = document.querySelector("#toDoList");
 const toDoItem = document.querySelector(".toDoItem");
 const toDoText = document.querySelector(".toDoText");
 const newItemBtn = document.querySelector("#newItemBtn");
-const textForNewToDo = document.querySelector("#textForNewToDo");
 const textEditor = document.querySelector("#textEditor");
 const editTextPopupWrapper = document.querySelector("#editTextPopupWrapper");
 const editTextBtn = document.querySelector("#editTextBtn");
@@ -15,15 +14,18 @@ const allToDoTexts = document.getElementsByClassName("toDoText");
 //     code
 // }
 function newItemBtnClickHandler(e) {
+    const textForNewToDo = document.querySelector("#textForNewToDo");
     e.preventDefault();
     if (textForNewToDo.value) {
         //variables
         const newToDoItem = document.createElement("li");
+        const newLiLeftDiv = document.createElement("div");
         const newCheckDoneBtn = document.createElement("button");
         const newToDoText = document.createElement("p");
         const newDeleteBtn = document.createElement("button");
         //add appropriate classes
         newToDoItem.classList.add("toDoItem");
+        newLiLeftDiv.classList.add("li-left");
         newCheckDoneBtn.classList.add("checkDoneBtn");
         newToDoText.classList.add("toDoText");
         newDeleteBtn.classList.add("deleteBtn");
@@ -31,24 +33,28 @@ function newItemBtnClickHandler(e) {
         newCheckDoneBtn.textContent = "□";
         newToDoText.textContent = `${textForNewToDo.value}`;
         newDeleteBtn.textContent = "Delete";
+        //append li-left children
+        newLiLeftDiv.appendChild(newCheckDoneBtn);
+        newLiLeftDiv.appendChild(newToDoText);
+
         //append children to li
-        newToDoItem.appendChild(newCheckDoneBtn);
-        newToDoItem.appendChild(newToDoText);
+        newToDoItem.appendChild(newLiLeftDiv);
         newToDoItem.appendChild(newDeleteBtn);
 
         //append new item to list
         toDoList.appendChild(newToDoItem);
 
         //update node list so each new one will have the event listener
-        console.log(allToDoTexts);
         Array.from(allToDoTexts).forEach((toDoText) => {
-            toDoText.addEventListener("dblclick", toDoTextDblClickHandler);
+            toDoText.addEventListener("click", toDoTextClickHandler);
             toDoText.addEventListener("mouseover", toDoMouseOverHandler);
             toDoText.addEventListener("mouseout", toDoMouseOutHandler);
         });
+        //reset text box
+        textForNewToDo.value = "";
     }
 }
-function toDoTextDblClickHandler(e) {
+function toDoTextClickHandler(e) {
     Array.from(allToDoTexts).forEach((toDoText) => {
         toDoText.removeEventListener("mouseout", toDoMouseOutHandler);
     });
@@ -71,6 +77,7 @@ function closePopupBtnClickHandler(e) {
     Array.from(allToDoTexts).forEach((toDoText) => {
         toDoText.addEventListener("mouseout", toDoMouseOutHandler);
     });
+
     editTextPopupWrapper.style.display = "none";
 }
 function toDoMouseOverHandler(e) {
@@ -84,7 +91,7 @@ function toDoMouseOutHandler(e) {
 console.log(allToDoTexts);
 newItemBtn.addEventListener("click", newItemBtnClickHandler);
 Array.from(allToDoTexts).forEach((toDoText) =>
-    toDoText.addEventListener("dblclick", toDoTextDblClickHandler)
+    toDoText.addEventListener("click", toDoTextClickHandler)
 );
 editTextBtn.addEventListener("click", editTxtBtnClickHandler);
 closePopupBtn.addEventListener("click", closePopupBtnClickHandler);
