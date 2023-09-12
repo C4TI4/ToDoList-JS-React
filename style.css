@@ -17,6 +17,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* justify-content: center; */
     padding: 3em;
 }
 
@@ -31,11 +32,28 @@ ul li {
     /* position: relative; */
     cursor: pointer;
     padding: 12px 8px 12px 40px;
-    background: #eee;
+    /* background: #eee; */
     font-size: 18px;
     transition: 0.2s;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+}
+
+.li-left {
+    display: flex;
+    align-items: baseline;
+}
+
+button {
+    padding: 4px;
+    background-color: aqua;
+    margin: 5px;
+}
+
+.deleteBtn {
+    justify-self: flex-end;
 }
 
 .container {
@@ -55,7 +73,7 @@ footer {
     align-items: end;
 }
 .current {
-    background-color: grey;
+    background-color: lightblue;
 }
 
 #editTextPopupWrapper {
