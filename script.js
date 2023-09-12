@@ -3,7 +3,6 @@ const toDoList = document.querySelector("#toDoList");
 const toDoItem = document.querySelector(".toDoItem");
 const toDoText = document.querySelector(".toDoText");
 const newItemBtn = document.querySelector("#newItemBtn");
-const textEditor = document.querySelector("#textEditor");
 const editTextPopupWrapper = document.querySelector("#editTextPopupWrapper");
 const editTextBtn = document.querySelector("#editTextBtn");
 const closePopupBtn = document.querySelector("#closePopupBtn");
@@ -55,6 +54,7 @@ function newItemBtnClickHandler(e) {
     }
 }
 function toDoTextClickHandler(e) {
+    const textEditor = document.querySelector("#textEditor");
     Array.from(allToDoTexts).forEach((toDoText) => {
         toDoText.removeEventListener("mouseout", toDoMouseOutHandler);
     });

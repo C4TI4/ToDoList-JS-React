@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap");
 
-*,
+/* *,
 *:before,
 *:after {
     padding: 0;
@@ -18,30 +18,30 @@ body {
     flex-direction: column;
     align-items: center;
     /* justify-content: center; */
-    padding: 3em;
-}
+/* padding: 3em;
+} */
 
-.header {
+/* .header {
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     font-size: medium;
     text-align: center;
     background-color: skyblue;
 }
 
-ul li {
-    /* position: relative; */
-    cursor: pointer;
+ul li { */
+/* position: relative; */
+/* background: #eee; */
+/* cursor: pointer;
     padding: 12px 8px 12px 40px;
-    /* background: #eee; */
     font-size: 18px;
     transition: 0.2s;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     width: 100%;
-}
+} */
 
-.li-left {
+/* .li-left {
     display: flex;
     align-items: baseline;
 }
@@ -56,12 +56,12 @@ button {
     justify-self: flex-end;
 }
 
-.container {
-    /* top: 50%; */
-    /* left: 50%; */
-    /* transform: translate(-50%, -50%); */
-    /* position: absolute; */
-    width: 40%;
+.container { */
+/* top: 50%; */
+/* left: 50%; */
+/* transform: translate(-50%, -50%); */
+/* position: absolute; */
+/* width: 40%;
     background: white;
     border-radius: 10px;
     min-width: 450px;
@@ -71,7 +71,7 @@ button {
 footer {
     text-align: center;
     align-items: end;
-}
+} */
 .current {
     background-color: lightblue;
 }
