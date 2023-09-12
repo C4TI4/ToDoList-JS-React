@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 
@@ -50,4 +51,28 @@ ul li {
 footer {
     text-align: center;
     align-items: end;
+}
+.current {
+    background-color: grey;
+}
+
+#editTextPopupWrapper {
+    position: fixed;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(100, 100, 100, 0.5);
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    border: 2px green solid;
+    top: 0;
+    left: 0;
+}
+
+#editTextPopup {
+    background-color: lightgray;
+    border: solid black 2px;
+    border-radius: 20px;
+    padding: 2em;
 }
