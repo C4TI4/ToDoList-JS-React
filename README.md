@@ -24,4 +24,4 @@ Edit a ToDo item
 
 Delete a ToDo item
 
-Persist ToDo items in LocalStorage https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+Persist ToDo items in [LocalStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
