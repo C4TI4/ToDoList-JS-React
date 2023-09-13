@@ -10,6 +10,8 @@ const closePopupBtn = document.querySelector("#closePopupBtn");
 const allToDoTexts = document.getElementsByClassName("toDoText");
 const checkDoneBtn = document.querySelector(".checkDoneBtn");
 const allCheckDoneBtns = document.getElementsByClassName("checkDoneBtn");
+const deleteBtn = document.querySelector(".deleteBtn");
+const allDeleteBtns = document.getElementsByClassName("deleteBtn");
 
 //localstorage variables
 loadToDos();
@@ -98,6 +100,9 @@ function newItemBtnClickHandler(e) {
         Array.from(allCheckDoneBtns).forEach((checkDoneBtn) =>
             checkDoneBtn.addEventListener("click", toggleDone)
         );
+        Array.from(allDeleteBtns).forEach((deleteBtn) =>
+            deleteBtn.addEventListener("click", deleteItem)
+        );
         //add to todos array
         const storedTodos = localStorage.getItem("todos");
         const todos = JSON.parse(storedTodos) || [];
@@ -121,7 +126,21 @@ function toDoTextClickHandler(e) {
 function editTxtBtnClickHandler(e) {
     e.preventDefault();
     const currentToDo = document.querySelector(".current");
+
+    //add to local storage
+    const storedTodos = localStorage.getItem("todos");
+    if (storedTodos) {
+        const todos = JSON.parse(storedTodos);
+        todos.forEach((todo) => {
+            if (todo.title === currentToDo.textContent) {
+                todo.title = textEditor.value;
+            }
+        });
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }
     currentToDo.textContent = textEditor.value;
+    //add mouseout back
+    currentToDo.classList.remove("current");
     Array.from(allToDoTexts).forEach((toDoText) => {
         toDoText.addEventListener("mouseout", toDoMouseOutHandler);
     });
@@ -129,10 +148,11 @@ function editTxtBtnClickHandler(e) {
 }
 function closePopupBtnClickHandler(e) {
     e.preventDefault();
+    const currentToDo = document.querySelector(".current");
+    currentToDo.classList.remove("current");
     Array.from(allToDoTexts).forEach((toDoText) => {
         toDoText.addEventListener("mouseout", toDoMouseOutHandler);
     });
-
     editTextPopupWrapper.style.display = "none";
 }
 function toDoMouseOverHandler(e) {
@@ -141,28 +161,6 @@ function toDoMouseOverHandler(e) {
 function toDoMouseOutHandler(e) {
     e.target.classList.remove("current");
 }
-//Events
-// Example: toDoList.addEventListener("click", toDoClickHandler);
-console.log(allToDoTexts);
-newItemBtn.addEventListener("click", newItemBtnClickHandler);
-Array.from(allToDoTexts).forEach((toDoText) =>
-    toDoText.addEventListener("click", toDoTextClickHandler)
-);
-editTextBtn.addEventListener("click", editTxtBtnClickHandler);
-closePopupBtn.addEventListener("click", closePopupBtnClickHandler);
-Array.from(allToDoTexts).forEach((toDoText) =>
-    toDoText.addEventListener("mouseover", toDoMouseOverHandler)
-);
-Array.from(allToDoTexts).forEach((toDoText) =>
-    toDoText.addEventListener("mouseout", toDoMouseOutHandler)
-);
-Array.from(allCheckDoneBtns).forEach((checkDoneBtn) =>
-    checkDoneBtn.addEventListener("click", toggleDone)
-);
-// Done Actions //
-
-checkDoneBtn.addEventListener("click", toggleDone);
-
 function toggleDone(event) {
     // if event target is button you can use nextElementSibling to change the styling of the text
 
@@ -185,20 +183,52 @@ function toggleDone(event) {
     // checkDoneBtn.textContent = parentLi.classList.contains("done")
     //     ? "\u2611"
     //     : "\u2610";
-    // localstorage bit next ElementSiblingVersion
-    // const storedTodos = localStorage.getItem("todos");
-    // const parseTodos = JSON.parse(storedTodos);
-    // parseTodos.forEach((todo) => {});
+    // }
+}
+function deleteItem() {
+    const todoText = this.previousElementSibling.lastElementChild.textContent;
+    const storedTodos = localStorage.getItem("todos");
+    if (storedTodos) {
+        const todos = JSON.parse(storedTodos);
+        todos.forEach((todo, i) => {
+            if (todo.title === todoText) {
+                todos.splice(i, 1);
+            }
+        });
+        localStorage.setItem("todos", JSON.stringify(todos));
+        if (todos.length === 0) {
+            localStorage.removeItem("todos");
+        }
+    }
+    this.parentElement.remove();
+
+    // event.target.parentElement.remove();
+    // if (event.target.classList.contains("deleteBtn")) {
+    //     const parentLi = event.target.closest(".toDoItem");
+    //     toDoList.removeChild(parentLi);
     // }
 }
 
-// Delete Actions //
-toDoList.addEventListener("click", deleteItem);
-
-function deleteItem(event) {
-    if (event.target.classList.contains("deleteBtn")) {
-        const parentLi = event.target.closest(".toDoItem");
-
-        toDoList.removeChild(parentLi);
-    }
-}
+//Events
+// Example: toDoList.addEventListener("click", toDoClickHandler);
+console.log(allToDoTexts);
+newItemBtn.addEventListener("click", newItemBtnClickHandler);
+Array.from(allToDoTexts).forEach((toDoText) =>
+    toDoText.addEventListener("click", toDoTextClickHandler)
+);
+editTextBtn.addEventListener("click", editTxtBtnClickHandler);
+closePopupBtn.addEventListener("click", closePopupBtnClickHandler);
+Array.from(allToDoTexts).forEach((toDoText) =>
+    toDoText.addEventListener("mouseover", toDoMouseOverHandler)
+);
+Array.from(allToDoTexts).forEach((toDoText) =>
+    toDoText.addEventListener("mouseout", toDoMouseOutHandler)
+);
+checkDoneBtn.addEventListener("click", toggleDone);
+Array.from(allCheckDoneBtns).forEach((checkDoneBtn) =>
+    checkDoneBtn.addEventListener("click", toggleDone)
+);
+deleteBtn.addEventListener("click", deleteItem);
+Array.from(allDeleteBtns).forEach((deleteBtn) =>
+    deleteBtn.addEventListener("click", deleteItem)
+);
