@@ -1,60 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To Do List - Dev Duo</title>
-    <link rel="stylesheet" href="./style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Anton"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!-- We need a form for adding a new to do -->
-    <section class="header container">
-      <h1>To-Do</h1>
-      <form id="makeNewToDoForm">
-        <input
-          class="newTaskInput"
-          type="text"
-          id="textForNewToDo"
-          placeholder="Add item..."
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>To Do List - Dev Duo</title>
+        <link rel="stylesheet" href="./style.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         />
-        <button class="addItemBtn" type="submit" id="newItemBtn">&#43;</button>
-      </form>
-    </section>
+        <link
+            href="https://fonts.googleapis.com/css?family=Anton"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <!-- We need a form for adding a new to do -->
+        <section class="header container">
+            <h1>To-Do</h1>
+            <form id="makeNewToDoForm">
+                <input
+                    class="newTaskInput"
+                    type="text"
+                    id="textForNewToDo"
+                    placeholder="Add item..."
+                />
+                <button class="addItemBtn" type="submit" id="newItemBtn">
+                    &#43;
+                </button>
+            </form>
+        </section>
 
-    <!-- We need some kind of container for the list itself -->
-    <main>
-      <section class="taskList">
-        <h2>Tasks</h2>
-        <ul id="toDoList" class="container">
-          <li class="toDoItem">
-            <div class="li-left">
-              <button class="checkDoneBtn">
-                <i class="fa-regular fa-circle-check"></i>
-              </button>
-              <p class="toDoText">Example item</p>
+        <!-- We need some kind of container for the list itself -->
+        <main>
+            <section class="taskList">
+                <h2>Tasks</h2>
+                <ul id="toDoList" class="container">
+                    <li class="toDoItem">
+                        <div class="li-left">
+                            <button class="checkDoneBtn">
+                                <!-- commented this for now-didn't seem to effect functionality
+                                  <i class="fa-regular fa-circle-check"></i> -->
+                                ☐
+                            </button>
+                            <p class="toDoText">Example item</p>
+                        </div>
+                        <button class="deleteBtn">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </li>
+                </ul>
+            </section>
+            <div id="editTextPopupWrapper">
+                <div id="editTextPopup">
+                    <h2>Edit your To-Do Item</h2>
+                    <input type="text" id="textEditor" />
+                    <button id="editTextBtn" type="submit">
+                        Submit Changes
+                    </button>
+                    <button id="closePopupBtn">Cancel</button>
+                </div>
             </div>
-            <button class="deleteBtn"><i class="fa fa-trash"></i></button>
-          </li>
-        </ul>
-      </section>
-      <div id="editTextPopupWrapper">
-        <div id="editTextPopup">
-          <h2>Edit your To-Do Item</h2>
-          <input type="text" id="textEditor" />
-          <button id="editTextBtn" type="submit">Submit Changes</button>
-          <button id="closePopupBtn">Cancel</button>
-        </div>
-      </div>
-    </main>
+        </main>
 
-    <script src="./script.js"></script>
-  </body>
+        <script src="./script.js"></script>
+    </body>
 </html>

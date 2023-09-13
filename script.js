@@ -9,6 +9,7 @@ const editTextBtn = document.querySelector("#editTextBtn");
 const closePopupBtn = document.querySelector("#closePopupBtn");
 const allToDoTexts = document.getElementsByClassName("toDoText");
 
+loadToDos();
 //Event handler functions
 //  Example: function toDoClickHandler (event) {
 //     code
@@ -23,20 +24,22 @@ function newItemBtnClickHandler(e) {
         const newCheckDoneBtn = document.createElement("button");
         const newToDoText = document.createElement("p");
         const newDeleteBtn = document.createElement("button");
+        const newI = document.createElement("i");
         //add appropriate classes
         newToDoItem.classList.add("toDoItem");
         newLiLeftDiv.classList.add("li-left");
         newCheckDoneBtn.classList.add("checkDoneBtn");
         newToDoText.classList.add("toDoText");
         newDeleteBtn.classList.add("deleteBtn");
+        newI.classList.add("fa fa-trash");
         //add appropriate textContent
-        newCheckDoneBtn.textContent = "□";
+        newCheckDoneBtn.textContent = "☐";
         newToDoText.textContent = `${textForNewToDo.value}`;
-        newDeleteBtn.textContent = "Delete";
         //append li-left children
         newLiLeftDiv.appendChild(newCheckDoneBtn);
         newLiLeftDiv.appendChild(newToDoText);
-
+        //append i to button
+        newDeleteBtn.appendChild(newI);
         //append children to li
         newToDoItem.appendChild(newLiLeftDiv);
         newToDoItem.appendChild(newDeleteBtn);
@@ -50,6 +53,9 @@ function newItemBtnClickHandler(e) {
             toDoText.addEventListener("mouseover", toDoMouseOverHandler);
             toDoText.addEventListener("mouseout", toDoMouseOutHandler);
         });
+
+        //add to local storage
+        addToDoItemToLocalStorage(textForNewToDo);
         //reset text box
         textForNewToDo.value = "";
     }
@@ -102,26 +108,48 @@ toDoText.addEventListener("mouseout", toDoMouseOutHandler);
 toDoList.addEventListener("click", toggleDone);
 
 function toggleDone(event) {
-  if (event.target.classList.contains("checkDoneBtn")) {
-    const parentLi = event.target.closest(".toDoItem");
+    if (event.target.classList.contains("checkDoneBtn")) {
+        const parentLi = event.target.closest(".toDoItem");
 
-    parentLi.classList.toggle("done");
+        parentLi.classList.toggle("done");
 
-    const checkDoneBtn = parentLi.querySelector(".checkDoneBtn");
-    checkDoneBtn.textContent = parentLi.classList.contains("done") ? "\u2610" : "\u2611";
-  }
+        const checkDoneBtn = parentLi.querySelector(".checkDoneBtn");
+        //switched codes here so it is checked when done
+        checkDoneBtn.textContent = parentLi.classList.contains("done")
+            ? "\u2611"
+            : "\u2610";
+    }
 }
-
-
 
 // Delete Actions //
 toDoList.addEventListener("click", deleteItem);
 
 function deleteItem(event) {
-  if (event.target.classList.contains("deleteBtn")) {
-    const parentLi = event.target.closest(".toDoItem");
+    if (event.target.classList.contains("deleteBtn")) {
+        const parentLi = event.target.closest(".toDoItem");
 
-    toDoList.removeChild(parentLi);
-  }
+        toDoList.removeChild(parentLi);
+    }
 }
 
+//localstorage with my messy idea that doesn't involve any objects
+function addToDoItemToLocalStorage(item) {
+    console.log("I was called.");
+    localStorage.setItem(`To do: ${item.value}`, item.value);
+}
+
+function loadToDos() {
+    Object.keys(localStorage).forEach((key) => {
+        const newToDoItem = document.createElement("li");
+        newToDoItem.classList.add("toDoItem");
+        newToDoItem.innerHTML = `<div class="li-left">
+              <button class="checkDoneBtn">
+                ☐
+              </button>
+              <p class="toDoText">${localStorage.getItem(key)}</p>
+            </div>
+            <button class="deleteBtn"><i class="fa fa-trash"></i></button>`;
+        toDoList.appendChild(newToDoItem);
+        console.log(localStorage.getItem(key));
+    });
+}
