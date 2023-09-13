@@ -21,6 +21,15 @@ body {
     padding: 3em;
 }
 
+.headerTitle {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Anton';
+    gap: 10px;
+    margin-top: 10px;
+
+}
+
 .header {
     font-family: 'Antonio';
     font-size: medium;
@@ -58,6 +67,7 @@ ul li {
     margin-top: 15px;
     margin-left: 10px;
     margin-right: 100px;
+    max-width: 100%;
 
 }
 
@@ -146,13 +156,10 @@ footer {
     border-radius: 30px;
     padding-left: 20px;
     background-color: #f6fdfd;
-    margin: 0 20px 10px 20px;
+    margin: 10px 20px 20px;
 
 }
 
-#makeNewToDoForm h1 {
-    margin-bottom: 1em;
-}
 
 .addItemBtn {
     border: none;

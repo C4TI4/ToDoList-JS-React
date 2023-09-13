@@ -32,7 +32,7 @@ function newItemBtnClickHandler(e) {
         //add appropriate textContent
         newCheckDoneBtn.textContent = "□";
         newToDoText.textContent = `${textForNewToDo.value}`;
-        newDeleteBtn.textContent = "Delete";
+        newDeleteBtn.textContent = "";
         //append li-left children
         newLiLeftDiv.appendChild(newCheckDoneBtn);
         newLiLeftDiv.appendChild(newToDoText);
