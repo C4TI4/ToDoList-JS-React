@@ -25,7 +25,10 @@ body {
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     font-size: medium;
     text-align: center;
-    background-color: skyblue;
+}
+
+.header h1 {
+    margin: 10px;
 }
 
 ul li {
@@ -48,8 +51,8 @@ ul li {
 
 button {
     padding: 4px;
-    background-color: aqua;
-    margin: 5px;
+    background-color: rgb(113, 238, 238);
+
 }
 
 .deleteBtn {
@@ -72,6 +75,7 @@ footer {
     text-align: center;
     align-items: end;
 }
+
 .current {
     background-color: lightblue;
 }
@@ -95,4 +99,23 @@ footer {
     border: solid black 2px;
     border-radius: 20px;
     padding: 2em;
+}
+
+#makeNewToDoForm {
+    display: flex;
+    justify-content: space-around;
+    border-style: hidden;
+
+}
+
+#makeNewToDoForm h1 {
+    margin-bottom: 1em;
+}
+
+
+.newTaskInput {
+    border-style: hidden;
+    background-color: rgb(240, 244, 244);
+    padding: 0 2em 0 2em;
+    border-radius: 20px;
 }

@@ -97,3 +97,31 @@ editTextBtn.addEventListener("click", editTxtBtnClickHandler);
 closePopupBtn.addEventListener("click", closePopupBtnClickHandler);
 toDoText.addEventListener("mouseover", toDoMouseOverHandler);
 toDoText.addEventListener("mouseout", toDoMouseOutHandler);
+
+// Done Actions //
+toDoList.addEventListener("click", toggleDone);
+
+function toggleDone(event) {
+  if (event.target.classList.contains("checkDoneBtn")) {
+    const parentLi = event.target.closest(".toDoItem");
+
+    parentLi.classList.toggle("done");
+
+    const checkDoneBtn = parentLi.querySelector(".checkDoneBtn");
+    checkDoneBtn.textContent = parentLi.classList.contains("done") ? "\u2610" : "\u2611";
+  }
+}
+
+
+
+// Delete Actions //
+toDoList.addEventListener("click", deleteItem);
+
+function deleteItem(event) {
+  if (event.target.classList.contains("deleteBtn")) {
+    const parentLi = event.target.closest(".toDoItem");
+
+    toDoList.removeChild(parentLi);
+  }
+}
+
