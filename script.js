@@ -9,9 +9,9 @@ const editTextBtn = document.querySelector("#editTextBtn");
 const closePopupBtn = document.querySelector("#closePopupBtn");
 const allToDoTexts = document.getElementsByClassName("toDoText");
 const checkDoneBtn = document.querySelector(".checkDoneBtn");
+const allCheckDoneBtns = document.getElementsByClassName("checkDoneBtn");
 
 //localstorage variables
-const todos = [];
 loadToDos();
 
 // local storage functions
@@ -22,15 +22,14 @@ function loadToDos() {
     const parseTodos = JSON.parse(storedTodos);
     parseTodos.forEach((todo) => {
         const newToDoItem = document.createElement("li");
-        newToDoItem.classList.add(
-            "toDoItem",
-            `${todo.done ? "done" : "not-done"}`
-        );
+        newToDoItem.classList.add("toDoItem");
         newToDoItem.innerHTML = `<div class="li-left">
                   <button class="checkDoneBtn">
                     ☐
                   </button>
-                  <p class="toDoText">${todo.title}</p>
+                  <p class="toDoText ${todo.done ? "done" : ""}">${
+            todo.title
+        }</p>
                 </div>
                 <button class="deleteBtn"><i class="fa fa-trash"></i></button>`;
         toDoList.appendChild(newToDoItem);
@@ -57,7 +56,6 @@ function loadToDos() {
 // }
 function newItemBtnClickHandler(e) {
     const textForNewToDo = document.querySelector("#textForNewToDo");
-    const allCheckDoneBtns = document.querySelectorAll(".checkDoneBtn");
     e.preventDefault();
     if (textForNewToDo.value) {
         //variables
@@ -97,10 +95,12 @@ function newItemBtnClickHandler(e) {
         });
 
         // event listener for check done and delete
-        allCheckDoneBtns.forEach((checkDoneBtn) =>
+        Array.from(allCheckDoneBtns).forEach((checkDoneBtn) =>
             checkDoneBtn.addEventListener("click", toggleDone)
         );
         //add to todos array
+        const storedTodos = localStorage.getItem("todos");
+        const todos = JSON.parse(storedTodos) || [];
         todos.push({ title: textForNewToDo.value, done: false });
         console.log("todos", todos);
         //add to local storage
@@ -150,17 +150,33 @@ Array.from(allToDoTexts).forEach((toDoText) =>
 );
 editTextBtn.addEventListener("click", editTxtBtnClickHandler);
 closePopupBtn.addEventListener("click", closePopupBtnClickHandler);
-toDoText.addEventListener("mouseover", toDoMouseOverHandler);
-toDoText.addEventListener("mouseout", toDoMouseOutHandler);
-
+Array.from(allToDoTexts).forEach((toDoText) =>
+    toDoText.addEventListener("mouseover", toDoMouseOverHandler)
+);
+Array.from(allToDoTexts).forEach((toDoText) =>
+    toDoText.addEventListener("mouseout", toDoMouseOutHandler)
+);
+Array.from(allCheckDoneBtns).forEach((checkDoneBtn) =>
+    checkDoneBtn.addEventListener("click", toggleDone)
+);
 // Done Actions //
 
 checkDoneBtn.addEventListener("click", toggleDone);
 
 function toggleDone(event) {
     // if event target is button you can use nextElementSibling to change the styling of the text
+
+    const storedTodos = localStorage.getItem("todos");
+    if (storedTodos) {
+        const todos = JSON.parse(storedTodos);
+        todos.forEach((todo) => {
+            if (todo.title === event.target.nextElementSibling.textContent) {
+                todo.done = !todo.done;
+            }
+        });
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }
     event.target.nextElementSibling.classList.toggle("done");
-    console.log(event.target.nextElementSibling);
     //  if (event.target.classList.contains("checkDoneBtn")) {
     //         const parentLi = event.target.closest(".toDoItem");
     //         const checkDoneBtn = parentLi.querySelector(".checkDoneBtn");
