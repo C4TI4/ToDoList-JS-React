@@ -8,6 +8,7 @@ const editTextPopupWrapper = document.querySelector("#editTextPopupWrapper");
 const editTextBtn = document.querySelector("#editTextBtn");
 const closePopupBtn = document.querySelector("#closePopupBtn");
 const allToDoTexts = document.getElementsByClassName("toDoText");
+const checkDoneBtn = document.querySelector(".checkDoneBtn");
 
 //localstorage variables
 const todos = [];
@@ -56,6 +57,7 @@ function loadToDos() {
 // }
 function newItemBtnClickHandler(e) {
     const textForNewToDo = document.querySelector("#textForNewToDo");
+    const allCheckDoneBtns = document.querySelectorAll(".checkDoneBtn");
     e.preventDefault();
     if (textForNewToDo.value) {
         //variables
@@ -93,6 +95,11 @@ function newItemBtnClickHandler(e) {
             toDoText.addEventListener("mouseover", toDoMouseOverHandler);
             toDoText.addEventListener("mouseout", toDoMouseOutHandler);
         });
+
+        // event listener for check done and delete
+        allCheckDoneBtns.forEach((checkDoneBtn) =>
+            checkDoneBtn.addEventListener("click", toggleDone)
+        );
         //add to todos array
         todos.push({ title: textForNewToDo.value, done: false });
         console.log("todos", todos);
@@ -147,28 +154,26 @@ toDoText.addEventListener("mouseover", toDoMouseOverHandler);
 toDoText.addEventListener("mouseout", toDoMouseOutHandler);
 
 // Done Actions //
-const checkDoneBtn = document.querySelector(".checkDoneBtn");
+
 checkDoneBtn.addEventListener("click", toggleDone);
 
 function toggleDone(event) {
-    //if event target is button you can use nextElementSibling to change the styling of the text
-    //
-    // if (event.target.classList.contains("checkDoneBtn")) {
-    // const parentLi = event.target.closest(".toDoItem");
-
-    // parentLi.classList.toggle("done");
-
-    // const checkDoneBtn = parentLi.querySelector(".checkDoneBtn");
-    //switched codes here so it is checked when done
+    // if event target is button you can use nextElementSibling to change the styling of the text
+    event.target.nextElementSibling.classList.toggle("done");
+    console.log(event.target.nextElementSibling);
+    //  if (event.target.classList.contains("checkDoneBtn")) {
+    //         const parentLi = event.target.closest(".toDoItem");
+    //         const checkDoneBtn = parentLi.querySelector(".checkDoneBtn");
+    //         parentLi.classList.toggle("done");
+    // switched codes here so it is checked when done
     // checkDoneBtn.textContent = parentLi.classList.contains("done")
     //     ? "\u2611"
     //     : "\u2610";
-    //localstorage bit next ElementSiblingVersion
-    event.target.nextElementSibling.classList.toggle("done");
+    // localstorage bit next ElementSiblingVersion
     // const storedTodos = localStorage.getItem("todos");
     // const parseTodos = JSON.parse(storedTodos);
     // parseTodos.forEach((todo) => {});
-    //
+    // }
 }
 
 // Delete Actions //
@@ -181,5 +186,3 @@ function deleteItem(event) {
         toDoList.removeChild(parentLi);
     }
 }
-
-//localstorage with my messy idea that doesn't involve any objects
