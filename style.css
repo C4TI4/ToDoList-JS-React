@@ -52,7 +52,10 @@ ul li {
 button {
     padding: 4px;
     background-color: rgb(113, 238, 238);
+}
 
+.done {
+    text-decoration: line-through;
 }
 
 .deleteBtn {
@@ -105,13 +108,11 @@ footer {
     display: flex;
     justify-content: space-around;
     border-style: hidden;
-
 }
 
 #makeNewToDoForm h1 {
     margin-bottom: 1em;
 }
-
 
 .newTaskInput {
     border-style: hidden;
