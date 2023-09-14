@@ -11,6 +11,9 @@ Day 1
 [GitHub Repo](https://github.com/C4TI4/ToDoList-JS-React)<br>
 Group name ❤<br>
 
+
+If you'd like to see the current state of our site click [here](https://c4ti4.github.io/ToDoList-JS-React/) ♥
+
 Week 1
 <br>
 
