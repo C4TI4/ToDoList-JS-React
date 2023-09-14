@@ -98,6 +98,7 @@ closePopupBtn.addEventListener("click", closePopupBtnClickHandler);
 toDoText.addEventListener("mouseover", toDoMouseOverHandler);
 toDoText.addEventListener("mouseout", toDoMouseOutHandler);
 
+
 // Done Actions //
 toDoList.addEventListener("click", toggleDone);
 

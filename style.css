@@ -30,17 +30,16 @@ body {
 
 }
 
-.header {
-    font-family: 'Antonio';
-    font-size: medium;
-    text-align: center;
-}
 
-.header h1 {
+
+
+.headerTitle {
     margin: 10px;
     font-family: 'Anton';
     font-size: 20px;
+    text-align: center;
 }
+
 
 ul li {
     /* position: relative; */
@@ -63,19 +62,19 @@ ul li {
 .toDoItem {
     display: flex;
     align-items: baseline;
-    flex-direction: row;
-    margin-top: 15px;
-    margin-left: 10px;
-    margin-right: 100px;
-    max-width: 100%;
+    flex-direction: ;
+    margin: 5px;
+    max-width: 95%;
 
 }
+
+
 
 .deleteBtn {
     justify-self: flex-end;
     border: none;
     outline: none;
-    padding: 16px 40px;
+    padding: 16px 20px;
     border-radius: 40px;
     background-color: rgb(171, 217, 243);
 }
@@ -84,7 +83,7 @@ ul li {
 
     border: none;
     outline: none;
-    padding: 16px 40px;
+    padding: 16px 20px;
     border-radius: 40px;
     background-color: rgb(171, 217, 243);
 }
@@ -95,7 +94,7 @@ ul li {
     /* transform: translate(-50%, -50%); */
     /* position: absolute; */
     width: 40%;
-    background: white;
+    background: rgba(100, 100, 100, 0.5);
     border-radius: 10px;
     min-width: 450px;
     min-height: 100px;
@@ -111,16 +110,6 @@ ul li {
 }
 
 
-
-hr {
-    color: black;
-    background-color: black;
-}
-
-footer {
-    text-align: center;
-    align-items: end;
-}
 
 .current {
     background-color: lightblue;
@@ -156,7 +145,7 @@ footer {
     border-radius: 30px;
     padding-left: 20px;
     background-color: #f6fdfd;
-    margin: 10px 20px 20px;
+    margin: 10px 20px;
 
 }
 
