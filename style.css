@@ -30,7 +30,7 @@ body {
 }
 
 .header {
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-family: "Antonio";
     font-size: medium;
     text-align: center;
 }
@@ -41,8 +41,8 @@ body {
     font-size: 20px;
 }
 
-ul li {
-    /* position: relative; */
+.toDoItem {
+  /* position: relative; */
     cursor: pointer;
     padding: 12px 8px 12px 30px;
     background-color: #f6fdfd;
@@ -56,6 +56,7 @@ ul li {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
         sans-serif;
+    gap: 10px;
 }
 
 .li-left {
@@ -136,6 +137,9 @@ footer {
     border: solid black 2px;
     border-radius: 20px;
     padding: 2em;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
 }
 
 #makeNewToDoForm {
@@ -155,17 +159,6 @@ footer {
     padding: 16px 40px;
     border-radius: 40px;
     background-color: rgb(171, 217, 243);
-}
-
-#makeNewToDoForm h1 {
-    margin-bottom: 1em;
-}
-
-.newTaskInput {
-    border-style: hidden;
-    background-color: rgb(240, 244, 244);
-    padding: 0 2em 0 2em;
-    border-radius: 20px;
 }
 
 .newTaskInput {
