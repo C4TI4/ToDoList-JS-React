@@ -1,64 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>To Do List - Dev Duo</title>
-        <link rel="stylesheet" href="./style.css" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List - Dev Duo</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Anton"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- We need a form for adding a new to do -->
+    <div class="container">
+    <h1 class="headerTitle">To-Do</h1>
+    <section class="header">
+      <form id="makeNewToDoForm">
+        <input
+          class="newTaskInput"
+          type="text"
+          id="textForNewToDo"
+          placeholder="Add item..."
         />
-        <link
-            href="https://fonts.googleapis.com/css?family=Anton"
-            rel="stylesheet"
-        />
-    </head>
-    <body>
-        <!-- We need a form for adding a new to do -->
-        <h1 class="headerTitle">To-Do</h1>
-        <section class="header container">
-            <form id="makeNewToDoForm">
-                <input
-                    class="newTaskInput"
-                    type="text"
-                    id="textForNewToDo"
-                    placeholder="Add item..."
-                />
-                <button class="addItemBtn" id="newItemBtn" type="submit">
-                    &#43;
-                </button>
-            </form>
-        </section>
-        <!-- We need some kind of container for the list itself -->
-        <main>
-            <section class="taskList">
-                <h2>Tasks</h2>
-                <ul id="toDoList" class="container">
-                    <li class="toDoItem">
-                        <div class="li-left">
-                            <button class="checkDoneBtn">☐</button>
-                            <p class="toDoText">Example item</p>
-                        </div>
-                        <button class="deleteBtn">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </li>
-                </ul>
-            </section>
-            <!-- PopUp messages -->
-            <div id="editTextPopupWrapper">
-                <div id="editTextPopup">
-                    <h2>Edit your To-Do Item</h2>
-                    <input type="text" id="textEditor" />
-                    <button id="editTextBtn" type="submit">
-                        Submit Changes
-                    </button>
-                    <button id="closePopupBtn">Cancel</button>
-                </div>
+        <button class="addItemBtn" type="submit" id="newItemBtn">&#43;</button>
+      </form>
+    </section>
+    </div>
+    <!-- We need some kind of container for the list itself -->
+
+    
+      <section class="taskList">
+        <h2>Tasks</h2>
+        <div class="container">
+        <ul id="toDoList" class="toDoList">
+          <li class="toDoItem">
+            <div class="li-left">
+              <button class="checkDoneBtn">☐</button>
             </div>
-        </main>
-        <footer>2023 - All Rights Reserved. &copy; DevDuo</footer>
-        <script src="./script.js"></script>
-    </body>
+              <p class="toDoText">Example item</p>            
+            <button class="deleteBtn"><i class="fa fa-trash"></i></button>
+          </li>
+        </ul>
+        </div>
+      </section>
+    
+      <!-- PopUp messages -->
+      <div id="editTextPopupWrapper">
+        <div id="editTextPopup">
+          <h2>Edit your To-Do Item</h2>
+          <input type="text" id="textEditor" />
+          <button id="editTextBtn" type="submit">Submit</button>
+          <button id="closePopupBtn">Cancel</button>
+        </div>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+  </body>
 </html>

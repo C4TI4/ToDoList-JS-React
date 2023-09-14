@@ -29,20 +29,19 @@ body {
     margin-top: 10px;
 }
 
-.header {
-    font-family: "Antonio";
-    font-size: medium;
-    text-align: center;
-}
 
-.header h1 {
+
+
+.headerTitle {
     margin: 10px;
     font-family: "Anton";
     font-size: 20px;
+    text-align: center;
 }
 
+
 .toDoItem {
-  /* position: relative; */
+   
     cursor: pointer;
     padding: 12px 8px 12px 30px;
     background-color: #f6fdfd;
@@ -65,9 +64,31 @@ body {
     gap: 10px;
 }
 .checkDoneBtn {
+
+    display: flex;
+    padding-right: 0px;
+    margin-right: 0px;
+    border-right: opx;
+}
+
+
+
+.toDoItem {
+    display: flex;
+    align-items: baseline;
+    flex-direction: ;
+    margin: 5px;
+    max-width: 95%;
+
+}
+
+
+
+.deleteBtn {
+    justify-self: flex-end;
     border: none;
     outline: none;
-    padding: 16px 40px;
+    padding: 16px 20px;
     border-radius: 40px;
     background-color: rgb(171, 217, 243);
 }
@@ -80,18 +101,15 @@ body {
     justify-self: flex-end;
     border: none;
     outline: none;
-    padding: 16px 40px;
+    padding: 16px 20px;
     border-radius: 40px;
     background-color: rgb(171, 217, 243);
 }
 
 .container {
-    /* top: 50%; */
-    /* left: 50%; */
-    /* transform: translate(-50%, -50%); */
-    /* position: absolute; */
+    
     width: 40%;
-    background: white;
+    background: rgba(225, 236, 239, 0.7);
     border-radius: 10px;
     min-width: 450px;
     min-height: 100px;
@@ -104,15 +122,13 @@ body {
     margin-top: 10px;
 }
 
-hr {
-    color: black;
-    background-color: black;
-}
+
 
 footer {
     text-align: center;
     align-items: end;
 }
+
 
 .current {
     background-color: lightblue;
@@ -151,6 +167,7 @@ footer {
     padding-left: 20px;
     background-color: #f6fdfd;
     margin: 10px 20px 20px;
+
 }
 
 .addItemBtn {
@@ -163,6 +180,7 @@ footer {
 
 .newTaskInput {
     flex: 1;
+    align-self: flex-start;
     border: none;
     background: transparent;
     outline: none;
@@ -172,3 +190,4 @@ footer {
         Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
         sans-serif;
 }
+

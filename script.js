@@ -218,6 +218,7 @@ Array.from(allToDoTexts).forEach((toDoText) =>
 );
 editTextBtn.addEventListener("click", editTxtBtnClickHandler);
 closePopupBtn.addEventListener("click", closePopupBtnClickHandler);
+
 Array.from(allToDoTexts).forEach((toDoText) =>
     toDoText.addEventListener("mouseover", toDoMouseOverHandler)
 );
@@ -232,3 +233,5 @@ deleteBtn.addEventListener("click", deleteItem);
 Array.from(allDeleteBtns).forEach((deleteBtn) =>
     deleteBtn.addEventListener("click", deleteItem)
 );
+
+
