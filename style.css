@@ -39,9 +39,11 @@ body {
     text-align: center;
 }
 
+/* .addItemBtnIcon {} */
+
 
 .toDoItem {
-   
+
     cursor: pointer;
     padding: 12px 8px 12px 30px;
     background-color: #f6fdfd;
@@ -63,20 +65,11 @@ body {
     align-items: baseline;
     gap: 10px;
 }
-.checkDoneBtn {
-
-    display: flex;
-    padding-right: 0px;
-    margin-right: 0px;
-    border-right: opx;
-}
-
 
 
 .toDoItem {
     display: flex;
     align-items: baseline;
-    flex-direction: ;
     margin: 5px;
     max-width: 95%;
 
@@ -84,13 +77,14 @@ body {
 
 
 
-.deleteBtn {
+.checkDoneBtn {
     justify-self: flex-end;
     border: none;
     outline: none;
     padding: 16px 20px;
     border-radius: 40px;
     background-color: rgb(171, 217, 243);
+    box-shadow: 0px 0px 1px 0.5px;
 }
 
 .done {
@@ -107,13 +101,15 @@ body {
 }
 
 .container {
-    
+
     width: 40%;
     background: rgba(225, 236, 239, 0.7);
+    box-shadow: 1px 1px;
     border-radius: 10px;
     min-width: 450px;
     min-height: 100px;
 }
+
 .taskList {
     display: flex;
     flex-direction: column;
@@ -190,4 +186,3 @@ footer {
         Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
         sans-serif;
 }
-
